@@ -18,7 +18,6 @@ read -p "souhaitez vous installer jetbrains ou visual studio code (0 pour aucun 
 
 
 
-
 #__________________________________________________FONCTIONS APPLICATIONS____________________________________________
 
 
@@ -69,33 +68,34 @@ function installation_indispensables(){
 	echo "installation indispensable terminee"
 }
 
-function installation_optionnelle(){
-	if [$A_discord == "1"] ; then
+function installation_optionnelle() {
+
+	if [ $A_discord == "1" ] ; then
 		echo "installation de discord"
 		$snap discord
 		echo "installation de discord terminee"
 	fi
-	if [$A_office == "1"] ; then
+	if [ $A_office == "1" ] ; then
 		echo "installation de onlyoffice"
 		installation_office
 		echo "installation de onlyoffice terminee"
 	fi
-	if [$A_password == "1"] ; then
+	if [ $A_password == "1" ] ; then
 		echo "installation de keepass"
 		$apt keepass2 mono-complete xdotool
 		echo "installation de keepass terminee"
 	fi
-	if [$A_password == "2"] ; then
+	if [ $A_password == "2" ] ; then
 		echo "installation de bitwarden"
 		$snap bitwarden
 		echo "installation de bitwarden terminee"
 	fi
-	if [$A_code == "1"] ; then
+	if [ $A_code == "1" ] ; then
 		echo "installation de keepass"
 		installation_jetbrains
 		echo "installation de keepass terminee"
 	fi
-	if [$A_code == "2"] ; then
+	if [ $A_code == "2" ] ; then
 		echo "installation de visual studio code"
 		$snap code --classic
 		echo "installation de visual studio code terminee"
@@ -106,11 +106,11 @@ function installation_optionnelle(){
 
 
 
-#____________________________________________MAIN____________________________________________________
+#____________________________________________MAIN___________________________________________________
 
 
 
 mise_a_jour
 installation_indispensables
-#installation_optionnelle
+installation_optionnelle
 exit
