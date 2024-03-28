@@ -13,6 +13,13 @@ read -p "souhaitez vous installer discord" A_discord
 read -p "souhaitez vous installer onlyoffice" A_office
 read -p "souhaitez vous installer keepass ou bitwarden (0 pour aucun 1 pour keepass et 2 pour bitwarden)" A_password
 read -p "souhaitez vous installer jetbrains ou visual studio code (0 pour aucun 1 pour keepass et 2 pour bitwarden)" A_code
+read -p "souhaitez vous installer tmux" A_tmux
+read -p "souhaitez vous installer VLC" A_VLC
+read -p "souhaitez vous rester sur firefox installer brave ou chrome (0 pour firefox 1 pour brave et 2 pour chrome)" A_web
+read -p "souhaitez vous basculer sur le zsh shell" A_shell
+read -p "souhaitez vous basculer sur l'environnement KDE " A_desktop
+
+
 
 
 
@@ -100,7 +107,37 @@ function installation_optionnelle() {
 		$snap code --classic
 		echo "installation de visual studio code terminee"
 	fi
-
+	if [ $A_tmux == "1" ] ; then
+		echo "installation de tmux"
+		$apt tmux
+		echo "Installation de tmux terminee"
+	fi
+	if [ $A_VLC == "1" ] ; then
+		echo "installation de VLC"
+		$snap vlc
+		echo "Installation de VLC terminee"
+	fi
+	if [ $A_web == "1" ] ; then
+		echo "installation de brave"
+		$snap brave
+		echo "installation de brave terminee"
+	fi
+	if [ $A_web == "2" ] ; then
+		echo "installation de chrome"
+		$apt_get google-chrome-stable
+		echo "installation de chrome terminee"
+	fi
+	if [ $A_shell == "1" ] ; then
+		echo "installation de ZSH"
+		$apt zsh
+		chsh -s $(which zsh)
+		echo "Installation de zsh terminee redemarrez le shell"
+	fi
+	if [ $A_desktop == "1" ] ; then
+		echo "installation de KDE"
+		$apt_get kubuntu-desktop
+		echo "Installation de KDE terminee redemarrez le shell"
+	fi
 }
 
 
